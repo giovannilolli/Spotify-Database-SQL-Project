@@ -6,7 +6,7 @@ import numpy as np
 connection = pymysql.connect(
     host="localhost",
     user="root",
-    password="sql090909",
+    password="",
     database="spotify_most_streamed_songs"
 )
 
