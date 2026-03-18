@@ -1,26 +1,59 @@
-# Spotify-Database-SQL-Project
+# Spotify Most Streamed Songs - SQL Database Project
+
+# Project Overview
+The goal of this group project was to take a raw CSV dataset of Spotify's most streamed songs and build a functioning MySQL database. We designed the tables, wrote a Python script to load the data, and built a simple interactive menu to check information from the dataset without needing to know SQL.
+
+# Tools Used
+
+Database: MySQL
+
+Programming: Python (pandas, pymysql)
+
+# Database Structure
+The database (spotify_most_streamed_songs) is divided into four connected tables to organize the data efficiently:
+
+Artist: Stores the artist's name and total global streams.
+
+Track: Stores basic song information (release date, track name) and links to the Artist table.
+
+Characteristics: Stores audio features for each track, like BPM, danceability, and energy.
+
+Playlist_Chart: Stores data on how often the song appeared on platform charts (Spotify, Apple, Deezer).
+
+<img width="1393" height="414" alt="image" src="https://github.com/user-attachments/assets/935fae39-095f-48bf-be6e-6b47bf8fbede" />
 
 
-This project includes a Python script called 4.query_app.py, which lets you run a few simple queries on a database of the most streamed songs on Spotify. It works together with three other files: schema.sql, which creates the database tables; data_loader.py,
-which loads all the data from the CSV file into the database; and queries.sql, where the queries were first written and tested.
+# How the Code Works
 
-At the start of the script, a connection is made to a MySQL database called spotify_most_streamed_songs. This is the same database that was created in schema.sql, and where all the Spotify data was inserted using data_loader.py.
+Our project runs using four main files working together:
 
-Inside the script, there’s a menu with 4 numbered options. Each option matches one query, with a short description to help the user know what it does. When the user picks a number, the program runs that query on the database and prints out the results.
-If something goes wrong (for example, no results or a database issue), a message is shown.
+schema.sql: This file creates the database and sets up the four tables.
 
-This makes the script useful to check information from the dataset without needing to know SQL. The menu keeps repeating until the user decides to exit by entering 0.
+data_loader.py: This script reads the raw CSV file, handles the missing values, and automatically loads all the data into the MySQL database.
 
-At the end, the connection to the database is closed.
+queries.sql: This is where we first wrote and tested all of our SQL queries to make sure they worked.
 
-The Queries Included
+4.query_app.py: This is the main interactive script. It connects to the database and opens a menu with 4 numbered options. The menu keeps repeating, allowing the user to run different queries and see the results printed on the screen, until they decide to exit by entering 0.
 
-All the queries were first written and tested in the file queries.sql, and then added to the Python app. Here’s what each one does:
-	1.	Tracks with Highest Instrumentalness from 2000
-This one looks for the most instrumental songs — meaning the ones with very little singing or speech — released from the year 2000 onwards. It shows the top 5.
-	2.	Most Popular Artists
-This query finds the 5 artists with the most total streams across all their songs. It gives a good idea of which artists were the most successful overall.
-	3.	Most Danceable Tracks After 2020
-This one shows the top 5 most danceable songs released after 2020. It can help spot the catchiest or most upbeat recent tracks.
-	4.	Tracks by Release Year
-This counts how many tracks were released in each year. The result gives a quick sense of which years had the most releases in the dataset.
+# The Queries Included
+When using the Python app, the user can choose from these four queries:
+
+1. Tracks with Highest Instrumentalness from 2000
+This looks for the most instrumental songs—meaning the ones with very little singing or speech—released from the year 2000 onwards. It shows the top 5.
+
+2. Most Popular Artists
+This query finds the 5 artists with the most total streams across all their songs. It gives a good idea of which artists were the most successful overall in the dataset.
+
+3. Most Danceable Tracks After 2020
+This shows the top 5 most danceable songs released after 2020. It helps spot the catchiest or most upbeat recent tracks.
+
+4. Tracks by Release Year
+This counts how many tracks were released in each year. The result gives a quick sense of which years had the most releases in our database.
+
+# How to Run This Project
+
+Run schema.sql in your MySQL environment to create the tables.
+
+Run data_loader.py to populate the database with the CSV data. (Note: Update the database password in the script to match your local environment).
+
+Run 4.query_app.py in your terminal to open the interactive query menu.k sense of which years had the most releases in the dataset.
